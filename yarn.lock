@@ -1722,10 +1722,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@ngxs/logger-plugin@^19.0.0-dev.master-4499a53":
-  version "19.0.0"
-  resolved "https://registry.yarnpkg.com/@ngxs/logger-plugin/-/logger-plugin-19.0.0.tgz#1eb6b6b31d68a7e71728dba823f0910cfb45a7c9"
-  integrity sha512-qLGB4muiLlDDYVUOLgXalWYjd3DumMJDM/JCuyQD7xJl9wwixbMWVME1tnZ1e2/FFqKRPuL+54OnEtQ3SrSpOg==
+"@ngxs/logger-plugin@19.0.0-dev.master-4499a53":
+  version "19.0.0-dev.master-4499a53"
+  resolved "https://registry.yarnpkg.com/@ngxs/logger-plugin/-/logger-plugin-19.0.0-dev.master-4499a53.tgz#135b8c586b4974bec64e38fab7aa91fa4dfb03a7"
+  integrity sha512-aktFKuP9b8EZZ0rxEaex8+c9H5HjEPvRlti35UbAeXoTWw012IOsh1fwHvxAsUMW5mJjvCHgvnRUaw03fg6WUw==
   dependencies:
     tslib "^2.3.0"
 
@@ -1743,10 +1743,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@ngxs/store@^19.0.0-dev.master-4499a53":
-  version "19.0.0"
-  resolved "https://registry.yarnpkg.com/@ngxs/store/-/store-19.0.0.tgz#703c9c31a8a2550975c813ccd3c623fae2dad722"
-  integrity sha512-h8xMl3OisrYabdfbUQjy98X/BSaId8t0iX3VlQgOmG0sYuC5OuZvggZywn0urLkA3H97LEI7ihvuS8spEBo6YA==
+"@ngxs/store@19.0.0-dev.master-4499a53":
+  version "19.0.0-dev.master-4499a53"
+  resolved "https://registry.yarnpkg.com/@ngxs/store/-/store-19.0.0-dev.master-4499a53.tgz#f6e062c0aa4636ee478fe5526eece0ad3278f09c"
+  integrity sha512-+GyD7KF2JISVUnnI6uJ9Z0w5BSThmF/txdqSvC0K4OA6u9XSF7Sj7S+UynhR9+qlxaFv6zzssDMlbpdDRDkxrw==
   dependencies:
     tslib "^2.3.0"
 
@@ -2852,6 +2852,11 @@ boolbase@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==
+
+bootstrap@5.3.3:
+  version "5.3.3"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.3.3.tgz#de35e1a765c897ac940021900fcbb831602bac38"
+  integrity sha512-8HLCdWgyoMguSO9o+aH+iuZ+aht+mzW0u3HIMzVu7Srrpv7EBBxTnrFlSCskwdY1+EOFQSm7uMJhNQHkdPcmjg==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
