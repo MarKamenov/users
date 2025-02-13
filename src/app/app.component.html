@@ -1,4 +1,8 @@
-<h1>Angular 19 Integration Test</h1>
-
-<button (click)="increment()">Increment</button>
-<p>Counter is {{ counter() }}</p>
+<div class="container">
+    <div class="row">
+        <app-users-list />
+        <div class="col-md-10" [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''">
+            <router-outlet #o="outlet"></router-outlet>
+        </div>
+    </div>
+</div>

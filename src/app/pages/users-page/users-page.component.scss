@@ -1,0 +1,5 @@
+@use 'components/pages';
+
+:host {
+    @include pages.read-page();
+}

@@ -1,0 +1,9 @@
+<div class="contact-avatar">
+    @if ( avatar()) {
+    <img [src]="avatar()" alt="User avatar" class="avatar-image">
+    } @else {
+    <div class="default-avatar">
+        <i class="fas fa-user"></i>
+    </div>}
+
+</div>

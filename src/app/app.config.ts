@@ -1,8 +1,10 @@
 import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideAnimationsAsync } from "@angular/platform-browser/animations/async"
 
 import { provideNgxs } from './store';
 
 export const appConfig = {
-  providers: [provideExperimentalZonelessChangeDetection(), provideRouter([]), provideNgxs()]
+  providers: [provideAnimationsAsync(), provideExperimentalZonelessChangeDetection(), provideRouter([]), provideNgxs()]
 };
+
