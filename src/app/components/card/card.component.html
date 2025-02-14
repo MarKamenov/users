@@ -1,8 +1,9 @@
 @let userData = user();
 <div class="contact-card">
     <div class="contact-card-header">
-        <app-avatar [avatar]="userData?.imageUrl"></app-avatar>
-        <app-user-details [email]="userData.email" [name]="userData.name"></app-user-details>
+        <app-avatar [avatar]="userData?.avatar"></app-avatar>
+        <app-user-details [email]="userData.email" [firstName]="userData.first_name"
+            [lastName]="userData.last_name"></app-user-details>
     </div>
     <app-user-actions (edit)="onEdit()" (delete)="onDelete()"></app-user-actions>
 </div>

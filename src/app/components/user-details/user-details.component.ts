@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './user-details.component.scss'
 })
 export class UserDetailsComponent {
-  name = input<string>();
+  firstName = input<string>();
+  lastName = input<string>();
   email = input<string>();
 }

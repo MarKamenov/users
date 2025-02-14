@@ -5,7 +5,7 @@ import { ButtonComponent } from '../../../components/button';
 
 @Component({
   selector: 'app-home-page',
-  imports: [RouterLink, CommonModule, ButtonComponent],
+  imports: [CommonModule, ButtonComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
