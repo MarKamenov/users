@@ -17,9 +17,9 @@ export function provideNgxs() {
       disabled: typeof ngDevMode !== 'undefined' && !ngDevMode
     }),
     withNgxsFormPlugin(),
-    withNgxsLoggerPlugin({
-      disabled: typeof ngDevMode !== 'undefined' && !ngDevMode
-    }),
+    // withNgxsLoggerPlugin({
+    //   disabled: typeof ngDevMode !== 'undefined' && !ngDevMode
+    // }),
     withNgxsStoragePlugin({ keys: '*' }),
     withNgxsWebSocketPlugin(),
     withNgxsRouterPlugin()

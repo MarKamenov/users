@@ -39,6 +39,11 @@
     --letter-spacing-lg: -0.025rem;
   }
 
+  html {
+    // default base font size (mobile first)
+    font-size: 14px;
+  }
+
   h1,
   h2,
   h3,

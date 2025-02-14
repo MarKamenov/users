@@ -2,15 +2,13 @@ import { Component, inject } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { COUNTER_STATE_TOKEN, Increment } from './store';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './animations';
-import { UsersListComponent } from './pages/users-list';
-
-
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterLink, UsersListComponent, RouterOutlet, RouterLinkActive],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
   animations: [slideInAnimation]
 })
 export class AppComponent {

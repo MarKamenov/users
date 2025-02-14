@@ -1,5 +1,5 @@
 <div class="user-cards-container">
-    @for (user of users; track user.id) {
+    @for (user of usersData(); track user.id) {
     <app-card [user]="user" />
     }
 </div>

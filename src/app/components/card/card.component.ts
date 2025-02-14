@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { AvatarComponent } from '../avatar';
 import { UserActionsComponent } from '../user-actions';
 import { UserDetailsComponent } from '../user-details';
 import { User } from '../../types';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -13,14 +14,13 @@ import { User } from '../../types';
 })
 export class CardComponent {
   user = input.required<User>();
+  private readonly router = inject(Router)
 
   onEdit() {
-    // Implement edit logic here (e.g., emit an event to the parent component)
-    console.log('Edit clicked');
+    this.router.navigate([`/users/user:${this.user().id}`]);
   }
 
   onDelete() {
-    // Implement delete logic here (e.g., emit an event to the parent component)
     console.log('Delete clicked');
   }
 }
