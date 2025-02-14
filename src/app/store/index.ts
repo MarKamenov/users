@@ -1,4 +1,4 @@
-export * from './counter/counter.state';
-export * from './counter/counter.actions';
+export * from './users/users.state';
+export * from './users/users.actions';
 
 export * from './ngxs-providers';

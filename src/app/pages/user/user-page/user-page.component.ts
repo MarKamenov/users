@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AvatarComponent } from '../../../components/avatar';
 import { ButtonComponent } from '../../../components/button';
-import { User } from '../../../types';
+import { User, UserType } from '../../../types';
 import { DeleteIconComponent } from '../../../icons/delete-icon';
+import { Observable, take } from 'rxjs';
+import { Store } from '@ngxs/store';
+import { UsersState } from '../../../store';
 
 @Component({
   selector: 'app-user-page',
@@ -15,21 +17,25 @@ import { DeleteIconComponent } from '../../../icons/delete-icon';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserPageComponent implements OnInit {
-  protected userForm!: FormGroup;
-  formBuilder = inject(FormBuilder)
-  user: User = {
-    id: 1,
-    first_name: 'John',
-    last_name: 'Doe',
-    email: 'john@doe.com',
-    avatar: '' //  Default avatar URL or path
-  };
+  protected store = inject(Store)
+  protected readonly user$: Observable<any> = this.store.select(UsersState.user);
+  private readonly formBuilder = inject(FormBuilder);
+  protected userForm = this.formBuilder.group({
+    first_name: ['', Validators.required], // Add validators as needed
+    last_name: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+  });
+
 
   ngOnInit(): void {
-    this.userForm = this.formBuilder.group({
-      first_name: '',
-      last_name: '',
-      email: '',
+    this.user$.pipe(take(1)).subscribe(user => {
+      if (user) {
+        this.userForm.patchValue({
+          first_name: user.first_name,
+          last_name: user.last_name,
+          email: user.email,
+        });
+      }
     });
   }
 
@@ -46,4 +52,9 @@ export class UserPageComponent implements OnInit {
       });
     }
   }
+
+  deleteClicked() {
+
+  }
 }
+

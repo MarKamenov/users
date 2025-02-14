@@ -1,3 +1,4 @@
+@let user = user$ | async;
 <div class="edit-page">
     <div class="edit-wrapper">
         <h2>Users > {{ user.first_name }} {{user.last_name}}</h2>
@@ -5,17 +6,14 @@
             <div class="row__icons-wrapper">
                 <div class="row__icons-wrapper__content">
                     <app-avatar [avatar]="user.avatar"></app-avatar>
-                    <app-delete-icon /><span>delete</span>
+                    <span (click)="deleteClicked()"><app-delete-icon /> delete</span>
                 </div>
 
             </div>
             <form [formGroup]="userForm" (ngSubmit)="saveUser()" class="user-form">
-                <input class="form-control" id="productCodeId" type="text" placeholder="Code (required)" required
-                    name="productCode" />
-                <input class="form-control" id="productCodeId" type="text" placeholder="Code (required)" required
-                    name="productCode" />
-                <input class="form-control" id="productCodeId" type="text" placeholder="Code (required)" required
-                    name="productCode" />
+                <input formControlName="first_name" class="form-control" type="text" name="productCode" />
+                <input formControlName="last_name" class="form-control" type="text" name="productCode" />
+                <input formControlName="email" class="form-control" type="text" name="productCode" />
             </form>
         </div>
         <app-button class="edit-wrapper__save" (click)="saveUser()" label="Save" backgroundColor="#3955F9"

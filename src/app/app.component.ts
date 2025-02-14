@@ -1,6 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { Store } from '@ngxs/store';
-import { COUNTER_STATE_TOKEN, Increment } from './store';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './animations';
@@ -12,11 +10,4 @@ import { slideInAnimation } from './animations';
   animations: [slideInAnimation]
 })
 export class AppComponent {
-  private readonly store = inject(Store);
-
-  readonly counter = this.store.selectSignal(COUNTER_STATE_TOKEN);
-
-  increment(): void {
-    this.store.dispatch(new Increment());
-  }
 }

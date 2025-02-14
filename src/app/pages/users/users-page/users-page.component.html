@@ -1,3 +1,4 @@
 <div class="users-page">
-    <app-users-list [usersData]="users" />
+    <app-users-list class="" [usersData]="usersList$ | async" />
+    <app-pagination />
 </div>

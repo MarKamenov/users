@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CardComponent } from '../../../components/card';
-import { User } from '../../../types';
+import { Nullable, User } from '../../../types';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users-list',
@@ -12,5 +13,16 @@ import { User } from '../../../types';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UsersListComponent {
-  usersData = input.required<User[]>()
+  usersData = input.required<Nullable<User[]>>()
+  private readonly router = inject(Router)
+
+  editUser(userId: string) {
+    this.router.navigate(['/user', userId]);
+  }
+  deleteUser(userId: string) {
+    if (confirm('Are you sure you want to delete this user?')) {
+
+    }
+  }
+
 }

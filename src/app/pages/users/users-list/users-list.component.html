@@ -1,5 +1,7 @@
 <div class="user-cards-container">
     @for (user of usersData(); track user.id) {
-    <app-card [user]="user" />
+    <app-card (editUser)="editUser($event)" (deleteUser)="deleteUser($event)" deleteUser="" [user]="user" />
+    }@empty {
+    <div>There are no users.</div>
     }
 </div>

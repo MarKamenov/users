@@ -3,8 +3,9 @@ import { provideAnimationsAsync } from "@angular/platform-browser/animations/asy
 
 import { provideNgxs } from './store';
 import { appRoutes } from './app.routes';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig = {
-  providers: [provideAnimationsAsync(), provideRouter(appRoutes), provideNgxs()]
+  providers: [provideAnimationsAsync(), provideRouter(appRoutes), provideHttpClient(), provideNgxs()]
 };
 
