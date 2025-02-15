@@ -1,4 +1,5 @@
 <div class="users-page">
-    <app-users-list class="" [usersData]="usersList$ | async" />
+    <app-button label="Create User" (onClick)="createUser()" backgroundColor="#3955F9" textColor="white"></app-button>
+    <app-users-list class="users-page__list" [usersData]="usersList$ | async" />
     <app-pagination />
 </div>

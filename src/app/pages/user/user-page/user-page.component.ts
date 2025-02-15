@@ -8,11 +8,11 @@ import { map, Observable } from 'rxjs';
 import { CreateUser, DeleteUser, PatchUser, UsersState } from '../../../store';
 import { Nullable, User } from '../../../types';
 import { UserFormComponent } from '../../../components/user-form';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-page',
-  imports: [CommonModule, RouterLink, ReactiveFormsModule, AvatarComponent, UserFormComponent, DeleteIconComponent],
+  imports: [CommonModule, ReactiveFormsModule, AvatarComponent, UserFormComponent, DeleteIconComponent],
   templateUrl: './user-page.component.html',
   styleUrl: './user-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

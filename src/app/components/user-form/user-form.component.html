@@ -1,7 +1,25 @@
 <form [formGroup]="userForm" class="user-form">
-    <input formControlName="first_name" placeholder="First name" class="form-control" type="text" name="first_name" />
-    <input formControlName="last_name" placeholder="Last name" class="form-control" type="text" name="last_name" />
-    <input formControlName="email" placeholder="Email" class="form-control" type="text" name="email" />
+    <div>
+        <input formControlName="first_name" placeholder="First name" class="form-control" type="text"
+            name="first_name" />
+        <div *ngIf="userForm.get('first_name')?.invalid && userForm.get('first_name')?.touched" style="color:red;">
+            First Name is required
+        </div>
+    </div>
+    <div>
+        <input formControlName="last_name" placeholder="Last name" class="form-control" type="text" name="last_name" />
+        <div *ngIf="userForm.get('last_name')?.invalid && userForm.get('last_name')?.touched" style="color:red;">
+            Last Name is required
+        </div>
+    </div>
+    <div>
+        <input formControlName="email" placeholder="Email" class="form-control" type="text" name="email" />
+        <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" style="color:red;">
+            <div *ngIf="userForm.get('email')?.errors?.['required']">Email is required</div>
+            <div *ngIf="userForm.get('email')?.errors?.['email']">Invalid email format</div>
+        </div>
+    </div>
+
     <input type="hidden" name="userId" value="{{user()?.id}}" />
     <input type="hidden" name="userId" value="{{user()?.avatar}}" />
     <app-button class="save" (onClick)="saveUser()" label="Save" backgroundColor="#3955F9"
