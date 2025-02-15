@@ -23,7 +23,6 @@
 
   <div class="pagination__per-page">
     <label htmlFor="items_per_page">Items per page:</label>
-    <span class="sr-only">Togggle Dropdown</span>
     <select id="items_per_page" title="Items pre page" name="items_per_page" class="pagination__select"
       [value]="paginationService.itemsPerPage()" (change)="onItemsPerPageChange($event)">
       <option value="5">5</option>

@@ -1,0 +1,9 @@
+<form [formGroup]="userForm" class="user-form">
+    <input formControlName="first_name" placeholder="First name" class="form-control" type="text" name="first_name" />
+    <input formControlName="last_name" placeholder="Last name" class="form-control" type="text" name="last_name" />
+    <input formControlName="email" placeholder="Email" class="form-control" type="text" name="email" />
+    <input type="hidden" name="userId" value="{{user()?.id}}" />
+    <input type="hidden" name="userId" value="{{user()?.avatar}}" />
+    <app-button class="save" (onClick)="saveUser()" label="Save" backgroundColor="#3955F9"
+        textColor="white"></app-button>
+</form>

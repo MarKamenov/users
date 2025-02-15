@@ -1,9 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { State, Action, StateContext, StateToken, Selector } from '@ngxs/store';
 
-import { LoadUser, LoadUsersList } from './users.actions';
+import { CreateUser, DeleteUser, LoadUser, LoadUsersList, PatchUser } from './users.actions';
 import { UsersModel } from '../../types/store';
-import { ListUsersResponse, SingleUserResponse, User, UserListType, UserType } from '../../types';
+import { ListUsersResponse, User, UserListType } from '../../types';
 import { catchError, Observable, tap } from 'rxjs';
 import { UsersService } from '../../core/services';
 
@@ -46,6 +46,58 @@ export class UsersState {
         throw error;
       }),
     );
+  }
+
+  @Action(CreateUser)
+  public createUser({ patchState, getState }: StateContext<UsersModel>, { user }: PatchUser): Observable<any> {
+    return this.usersService.createUser$(user).pipe(
+      tap(() => {
+        const state = getState();
+        patchState({
+          users: {
+            ...state.users,
+            data: [...state.users.data, user]
+          }
+        })
+      }),
+    );
+  }
+
+  @Action(PatchUser)
+  public patchUser({ patchState, getState }: StateContext<UsersModel>, { user }: PatchUser): Observable<string> {
+    return this.usersService.updateUser$(`${user.id}`).pipe(
+      tap(() => {
+        // This logic updates the state of the edited user. API does now work so it does not updated on the backend side
+        const state = getState();
+        patchState({
+          users: {
+            ...state.users,
+            data: state.users.data.map(item => {
+              if (Number(item.id) === Number(user.id)) {
+                return user;
+              } else {
+                return item
+              }
+            })
+          }
+        })
+      }),
+    );
+  }
+
+  @Action(DeleteUser)
+  public deleteUser({ patchState, getState }: StateContext<UsersModel>, { id }: DeleteUser): Observable<void> {
+    return this.usersService.deleteItem$(id).pipe(
+      tap(() => {
+        const state = getState();
+        patchState({
+          users: {
+            ...state.users,
+            data: state.users.data.filter(user => user.id != +id)
+          }
+        })
+      }),
+    )
   }
 
   @Selector()

@@ -3,9 +3,10 @@ import { provideAnimationsAsync } from "@angular/platform-browser/animations/asy
 
 import { provideNgxs } from './store';
 import { appRoutes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { httpTokenInterceptor } from './core/interceptors';
 
 export const appConfig = {
-  providers: [provideAnimationsAsync(), provideRouter(appRoutes), provideHttpClient(), provideNgxs()]
+  providers: [provideAnimationsAsync(), provideRouter(appRoutes), provideHttpClient(withFetch(), withInterceptors([httpTokenInterceptor])), provideNgxs()]
 };
 

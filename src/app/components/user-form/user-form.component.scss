@@ -1,0 +1,22 @@
+:host {
+    flex: 1
+}
+
+.user-form {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-control {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.save {
+    margin-left: auto;
+}

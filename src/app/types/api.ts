@@ -3,7 +3,7 @@ interface User {
     email: string;
     first_name: string;
     last_name: string;
-    avatar: string;
+    avatar?: string;
 }
 
 // Interface for the "support" object (used in both responses)

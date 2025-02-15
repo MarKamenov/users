@@ -1,4 +1,4 @@
-import { User, UserListType, UserType } from "./api";
+import { User, UserListType } from "./api";
 
 export interface UsersModel {
   users: UserListType;

@@ -1,7 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, tap } from 'rxjs';
-import { SingleUserResponse, ListUsersResponse } from '../../types';
+import { ListUsersResponse, User } from '../../types';
 import { ApiBaseService } from './api-base.service';
 import { PaginationService } from './pagination.service';
 
@@ -33,13 +33,31 @@ export class UsersService {
   public getUser$ = (id: string): Observable<unknown> => {
     return this.httpService.get<unknown>(`${this.usersUrl}/${id}`).pipe(
       catchError((error) => {
-        console.error('API Error:', error);
         throw error;
       })
     );
   }
 
+  public createUser$ = (newUser: User): Observable<any> => {
+    return this.httpService.post<unknown>(this.usersUrl, JSON.stringify(newUser)).pipe(
+      catchError((error) => {
+        throw error;
+      })
+    );;
+  };
+
   public updateUser$ = (id: string): Observable<string> =>
-    this.httpService.patch<string>(`${this.usersUrl}/${id}`);
+    this.httpService.patch<string>(`${this.usersUrl}/${id}`).pipe(
+      catchError((error) => {
+        throw error;
+      })
+    );
+
+  public deleteItem$ = (id: string): Observable<void> => {
+    return this.httpService.delete<void>(`${this.usersUrl}/${id}`).pipe(catchError((error) => {
+      throw error;
+    }));
+  };
+
 }
 

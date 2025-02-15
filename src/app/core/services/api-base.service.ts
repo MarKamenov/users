@@ -44,16 +44,13 @@ export class ApiBaseService {
       catchError(this.handleError),
     );
 
-  /**
- * PATCH: patch api request.
- *
- * @param {string} url api url
- * @param {*} body patch body
- * @param {{}} options http options
- * @returns {Observable<*>} patch return value
- */
   public patch = <T, B = unknown>(url: string, body?: B, options?: Record<string, unknown>): Observable<T> =>
-    this.http.patch<T>(url, body, options).pipe(
+    this.http.patch<T>(`${this.apiUrl}/${url}`, body, options).pipe(
+      catchError(this.handleError),
+    );
+
+  public delete = <T>(url: string, options?: Record<string, unknown>): Observable<T> =>
+    this.http.delete<T>(`${this.apiUrl}/${url}`, options).pipe(
       catchError(this.handleError),
     );
 

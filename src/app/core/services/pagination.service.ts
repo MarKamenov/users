@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { PaginationState } from '../../types/pagination';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +12,9 @@ export class PaginationService {
     totalPages: 0
   });
   private readonly router = inject(Router)
-
-  currentPage = computed(() => this.state().currentPage);
-  itemsPerPage = computed(() => this.state().itemsPerPage);
-  totalPages = computed(() => this.state().totalPages);
+  public currentPage = computed(() => this.state().currentPage);
+  public itemsPerPage = computed(() => this.state().itemsPerPage);
+  public totalPages = computed(() => this.state().totalPages);
 
   constructor() {
     // Initialize from URL params
@@ -26,35 +25,9 @@ export class PaginationService {
     this.updateState({ currentPage: page, itemsPerPage: perPage, totalPages: 0 });
   }
 
-  updateState(newState: Partial<PaginationState>) {
+  public updateState(newState: Partial<PaginationState>) {
     this.state.update(state => ({ ...state, ...newState }));
-    // this.updateURL();
-  }
-
-  setPage(page: number) {
-    if (page >= 1 && page <= this.totalPages()) {
-      this.updateState({ currentPage: page });
-    }
-  }
-
-  setItemsPerPage(items: number) {
-    this.updateState({ currentPage: 1, itemsPerPage: items });
-  }
-
-  setTotalPages(total: number) {
-    this.updateState({ totalPages: total });
-  }
-
-  nextPage() {
-    if (this.currentPage() < this.totalPages()) {
-      this.setPage(this.currentPage() + 1);
-    }
-  }
-
-  previousPage() {
-    if (this.currentPage() > 1) {
-      this.setPage(this.currentPage() - 1);
-    }
+    this.updateURL();
   }
 
   private updateURL() {
@@ -63,6 +36,32 @@ export class PaginationService {
       queryParams: { page: currentPage, per_page: itemsPerPage },
       queryParamsHandling: 'merge'
     });
+  }
+
+  public setPage(page: number) {
+    if (page >= 1 && page <= this.totalPages()) {
+      this.updateState({ currentPage: page });
+    }
+  }
+
+  public setItemsPerPage(items: number) {
+    this.updateState({ currentPage: 1, itemsPerPage: items });
+  }
+
+  public setTotalPages(total: number) {
+    this.updateState({ totalPages: total });
+  }
+
+  public nextPage() {
+    if (this.currentPage() < this.totalPages()) {
+      this.setPage(this.currentPage() + 1);
+    }
+  }
+
+  public previousPage() {
+    if (this.currentPage() > 1) {
+      this.setPage(this.currentPage() - 1);
+    }
   }
 }
 
